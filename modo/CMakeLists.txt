@@ -6,7 +6,10 @@ include("cmake/utils.cmake")
 # Define the project.
 project(modo_plugins)
 set(INCLUDE_DIR "${CMAKE_SOURCE_DIR}/include")
-
 add_compile_definitions("$<$<NOT:$<CONFIG:Debug>>:NDEBUG>")
+
+# Optionally set the target output dir for kits
+file(TO_CMAKE_PATH "$ENV{APPDATA}" USER_APP_DATA)
+set(CMAKE_INSTALL_PREFIX "${USER_APP_DATA}/Luxology/Kits")
 
 add_subdirectory("src")
